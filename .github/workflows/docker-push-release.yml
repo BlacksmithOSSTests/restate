@@ -14,7 +14,7 @@ env:
 jobs:
   push-server-docker-image:
     name: Build server Docker image
-    runs-on: warp-ubuntu-latest-x64-4x
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     env:
       REPOSITORY_OWNER: ${{ github.repository_owner }}
       GHCR_REGISTRY: "ghcr.io"
@@ -64,7 +64,7 @@ jobs:
 
   build-push-cli-docker-image:
     name: Push CLI Docker image
-    runs-on: warp-ubuntu-latest-x64-4x
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     env:
       REPOSITORY_OWNER: ${{ github.repository_owner }}
       GHCR_REGISTRY: "ghcr.io"
