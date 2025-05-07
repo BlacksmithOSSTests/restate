@@ -16,7 +16,7 @@ on:
 jobs:
   workspace-hack-check:
     name: Check workspace-hack
-    runs-on: warp-ubuntu-latest-x64-4x
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     env:
       RUSTFLAGS: -D warnings
     steps:
@@ -40,7 +40,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [warp-ubuntu-latest-x64-16x]
+        os: [blacksmith-16vcpu-ubuntu-2204]
     env:
       RUST_BACKTRACE: full
     steps:
@@ -171,7 +171,7 @@ jobs:
 
   e2e:
     name: Run E2E tests
-    runs-on: warp-ubuntu-latest-x64-4x
+    runs-on: blacksmith-4vcpu-ubuntu-2204
     permissions:
       contents: read
       issues: read
@@ -211,7 +211,7 @@ jobs:
 
   jepsen:
     if: github.event.repository.fork == false && github.event.pull_request.head.repo.full_name == 'restatedev/restate' && github.ref == 'refs/heads/main'
-    runs-on: warp-ubuntu-latest-arm64-4x
+    runs-on: blacksmith-4vcpu-ubuntu-2204-arm
     name: Run Jepsen tests
     env:
       CLUSTER_NAME: restatedev-restate-${{ github.event.pull_request.number != null && format('pr{0}', github.event.pull_request.number) || format('run{0}', github.run_id) }}
